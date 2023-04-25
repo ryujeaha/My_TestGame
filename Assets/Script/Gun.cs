@@ -9,13 +9,13 @@ public class Gun : MonoBehaviour
     public GameObject Shot;
     void Start()
     {
-        
+        StartCoroutine("Spawn_Shot");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Spawn_Shot();
+       
     }
     IEnumerator Spawn_Shot()
     {
@@ -24,7 +24,7 @@ public class Gun : MonoBehaviour
         {
             GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.Euler(0,0,-45));
         }
-       else if (Input.GetAxisRaw("Horizontal") == -1)//¿ÞÂÊ Å¬¸¯
+        else if (Input.GetAxisRaw("Horizontal") == -1)//¿ÞÂÊ Å¬¸¯
         {
             GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.Euler(0, 0, 45));
         }
@@ -32,6 +32,6 @@ public class Gun : MonoBehaviour
         {
             GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
         }
-
+        StartCoroutine("Spawn_Shot");
     }
 }
