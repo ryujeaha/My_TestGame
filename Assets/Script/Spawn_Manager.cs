@@ -9,7 +9,7 @@ public class Spawn_Manager : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("Spawn_Cow",1,3);
+        InvokeRepeating("Spawn_Cow",1,1);
     }
 
     void Spawn_Cow()
@@ -22,6 +22,7 @@ public class Spawn_Manager : MonoBehaviour
         else
         {
             GameObject cow = (GameObject)Instantiate(Cow, new Vector2(Spawns[Spawn].transform.position.x, Spawns[Spawn].transform.position.y), Quaternion.identity);
+            cow.transform.localScale = new Vector3(-0.35f, 0.35f, 1f);
             //에너미 스크립트에게 스케일 x값은 -0.35로 바꾸라고 전달해주기
         }
         

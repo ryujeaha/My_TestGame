@@ -6,6 +6,7 @@ public class Cow_Enemy : MonoBehaviour
 {
     private Transform target;//추적할 대상;
 
+    
     public float Cow_Speed =5f;//추적할 속도;
 
     // Update is called once per frame
@@ -21,9 +22,9 @@ public class Cow_Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Shot")
+       if (collision.gameObject.tag == "Player")
         {
-            Destroy(collision.gameObject);
+            Debug.Log("충돌");
             Destroy(this.gameObject);
         }
     }
