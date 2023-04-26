@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &690962565725286011
+--- !u!1 &8797149945083108416
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4002060453427100454}
-  - component: {fileID: 8022717928606799572}
-  - component: {fileID: 5570648721217493499}
-  - component: {fileID: 645965207386925203}
-  - component: {fileID: 4152370045292675200}
+  - component: {fileID: 8797149945083108420}
+  - component: {fileID: 8797149945083108419}
+  - component: {fileID: 8797149945083108418}
+  - component: {fileID: 8797149945083108417}
+  - component: {fileID: 5135857118698141341}
   m_Layer: 0
-  m_Name: Cow_Enemy
-  m_TagString: Enemy
+  m_Name: Shot
+  m_TagString: Shot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4002060453427100454
+--- !u!4 &8797149945083108420
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690962565725286011}
+  m_GameObject: {fileID: 8797149945083108416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12, y: 4, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8022717928606799572
+--- !u!212 &8797149945083108419
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690962565725286011}
+  m_GameObject: {fileID: 8797149945083108416}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bbf6abf6550f12b41a8de25a494bdce8, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 5ddd042d919f8954ebacd607345f39d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,40 +85,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5570648721217493499
+--- !u!61 &8797149945083108418
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690962565725286011}
+  m_GameObject: {fileID: 8797149945083108416}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0044231415, y: -0.01751554}
+  m_Offset: {x: 0.15124556, y: -0.25610155}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 4.98, y: 3.1699998, z: 4.69, w: 3.6499999}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10, y: 10}
+    oldSize: {x: 10.56, y: 11.2}
     newSize: {x: 10.56, y: 11.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.227711, y: 5.3320026}
+  m_Size: {x: 0.886592, y: 4.3409534}
   m_EdgeRadius: 0
---- !u!50 &645965207386925203
+--- !u!50 &8797149945083108417
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690962565725286011}
+  m_GameObject: {fileID: 8797149945083108416}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -132,16 +132,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4152370045292675200
+--- !u!114 &5135857118698141341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690962565725286011}
+  m_GameObject: {fileID: 8797149945083108416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6fd744a690bd164e93c161ee3e478e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b85bdb11f051e342a93c8777d7d7088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cow_Speed: 4
