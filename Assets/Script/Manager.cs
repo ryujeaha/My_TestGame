@@ -15,7 +15,7 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Stage_txt.text = "Stage" + stage_Level.ToString();
+        Stage_txt.text = "Stage " + stage_Level.ToString();
         Beef_txt.text = "얻은 소고기 수:" + BeefUp(Beef);
     }
 
@@ -25,7 +25,7 @@ public class Manager : MonoBehaviour
         if(Enemy_Count >= 30)
         {
             stage_Level++;
-            Stage_txt.text = "Stage" + stage_Level.ToString();
+            Stage_txt.text = "Stage " + stage_Level.ToString();
             Enemy_Count = 0;
             ;        }
     }

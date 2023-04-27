@@ -5,30 +5,58 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public Transform[] target;
-    public float Atk_Speed=0;
     public GameObject Shot;
+
+    public float Atk_Speed=0;
+    public float Cooltime = 0;
+
+    public int Gun_LV = 1;
+
+    bool ready_shot;
     void Start()
     {
-        StartCoroutine("Spawn_Shot");
+        ready_shot = true;
     }
-    IEnumerator Spawn_Shot()
+
+    private void Update()
     {
-        yield return new WaitForSeconds(Atk_Speed);
-        if (Input.GetAxisRaw("Horizontal") == 1)//오른쪽 클릭
+        Cooltime_set();
+        Spawn_Shot();
+    }
+
+    public void Cooltime_set()
+    {
+        Atk_Speed = Mathf.Sqrt(Gun_LV) / Gun_LV;
+        Cooltime -= Time.deltaTime;
+        if(Cooltime <= 0)
         {
-            GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.Euler(0,0,-45));
-            shot.GetComponent<Shot>().Set_Goal(2,target[2].transform);
+            ready_shot = true;
+            Cooltime = Atk_Speed;          
         }
-        else if (Input.GetAxisRaw("Horizontal") == -1)//왼쪽 클릭
+    }
+
+    void Spawn_Shot()
+    {
+        if (ready_shot)
         {
-            GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.Euler(0, 0, 45));
-            shot.GetComponent<Shot>().Set_Goal(0, target[0].transform);
+            if (Input.GetKeyDown(KeyCode.RightArrow))//오른쪽 클릭
+            {
+                GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.Euler(0, 0, -45));
+                shot.GetComponent<Shot>().Set_Goal(2, target[2].transform);
+                ready_shot = false;
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))//왼쪽 클릭
+            {
+                GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.Euler(0, 0, 45));
+                shot.GetComponent<Shot>().Set_Goal(0, target[0].transform);
+                ready_shot = false;
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow))//위쪽 클릭
+            {
+                GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
+                shot.GetComponent<Shot>().Set_Goal(1, target[1].transform);
+                ready_shot = false;
+            }
         }
-        else if (Input.GetAxisRaw("Vertical") == 1)//위쪽 클릭
-        {
-            GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
-            shot.GetComponent<Shot>().Set_Goal(1,target[1].transform);
-        }
-        StartCoroutine("Spawn_Shot");
     }
 }
