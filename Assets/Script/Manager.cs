@@ -8,7 +8,6 @@ public class Manager : MonoBehaviour
     public Text Stage_txt;
     public Text Beef_txt;
 
-
     public int Enemy_Count = 0;
     public BigInteger Beef = 0;
     public int stage_Level = 1;
@@ -29,6 +28,12 @@ public class Manager : MonoBehaviour
             Enemy_Count = 0;
             ;        }
     }
+    public int Set_Cow_hp()
+    {
+        int Cow_hp = (int)Get_cost(10, 10, 1.06f, stage_Level) * 2;
+        return Cow_hp;
+    }
+
     public BigInteger Get_cost(int b, int k, float r, int n)
     {
         BigInteger cost;
@@ -43,8 +48,6 @@ public class Manager : MonoBehaviour
         Beef_txt.text = "얻은 소고기 수 :" + BeefUp(Beef);
         Enemy_Count++;
     }
-
-
     public string BeefUp(BigInteger _beef)
     {
         string value = _beef.ToString();

@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class Cow_Enemy : MonoBehaviour
 {
+    Player player;
+
     private Transform target;//추적할 대상;
 
-    
+    public int Cow_Hp;
     public float Cow_Speed =5f;//추적할 속도;
+
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -24,8 +31,10 @@ public class Cow_Enemy : MonoBehaviour
     {
        if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("충돌");
             Destroy(this.gameObject);
+            player.Player_HP--;
+            player.HP_IMG[player.HP_Cnt].gameObject.SetActive(false);
+            player.HP_Cnt++;
         }
     }
 }

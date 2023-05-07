@@ -7,8 +7,11 @@ public class Spawn_Manager : MonoBehaviour
     public GameObject Cow;//받을 적 소 캐릭터 프리펩
     public GameObject[] Spawns;//스폰포인트들을 담을 배열변수
 
+    Manager manager;
+
     private void Start()
     {
+        manager = FindObjectOfType<Manager>();
         InvokeRepeating("Spawn_Cow",1,1);
     }
 
@@ -18,20 +21,15 @@ public class Spawn_Manager : MonoBehaviour
         if(Spawn != 2)
         {
             GameObject cow = (GameObject)Instantiate(Cow, new Vector2(Spawns[Spawn].transform.position.x, Spawns[Spawn].transform.position.y), Quaternion.identity);
+            cow.GetComponent<Cow_Enemy>().Cow_Hp = manager.Set_Cow_hp();
         }
         else
         {
             GameObject cow = (GameObject)Instantiate(Cow, new Vector2(Spawns[Spawn].transform.position.x, Spawns[Spawn].transform.position.y), Quaternion.identity);
             cow.transform.localScale = new Vector3(-0.35f, 0.35f, 1f);
-            //에너미 스크립트에게 스케일 x값은 -0.35로 바꾸라고 전달해주기
+            cow.GetComponent<Cow_Enemy>().Cow_Hp = manager.Set_Cow_hp();
         }
         
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

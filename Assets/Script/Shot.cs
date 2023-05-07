@@ -5,12 +5,14 @@ using UnityEngine;
 public class Shot : MonoBehaviour
 {
     Manager manager;
-
+    Gun gun;
     Transform targetMain;
     float speed = 5f;
+    int bullet_damage = 0;
     private void Start()
     {
         manager = FindObjectOfType<Manager>();
+        gun = FindObjectOfType<Gun>();
     }
 
     // Start is called before the first frame update
@@ -25,6 +27,7 @@ public class Shot : MonoBehaviour
     }
     void Move()
     {
+        bullet_damage = (int)(manager.Get_cost(50, 10, 1.07f, gun.Gun_LV)) / (5 / 2);
         transform.position = Vector2.MoveTowards(transform.position, targetMain.position, this.speed * Time.deltaTime);
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,8 +35,12 @@ public class Shot : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(this.gameObject);
-            Destroy(collision.gameObject);
-            manager.GetComponent<Manager>().Money();
+            collision.GetComponent<Cow_Enemy>().Cow_Hp = collision.GetComponent<Cow_Enemy>().Cow_Hp - bullet_damage;
+            if (collision.GetComponent<Cow_Enemy>().Cow_Hp <= 0)
+            {
+                Destroy(collision.gameObject);
+                manager.GetComponent<Manager>().Money();
+            }
         }
     }
 

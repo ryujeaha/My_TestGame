@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Gun : MonoBehaviour
 {
+    public Text Lv;
     public Transform[] target;
     public GameObject Shot;
 
@@ -37,6 +38,7 @@ public class Gun : MonoBehaviour
 
     void Spawn_Shot()
     {
+        Lv.text ="현재 레벨: "+Gun_LV.ToString();
         if (ready_shot)
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))//오른쪽 클릭
