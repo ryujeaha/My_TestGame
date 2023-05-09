@@ -18,6 +18,7 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Sound_Manager.instance.PlaySound("St.Anne's Reel", 0);
         save_Data = FindObjectOfType<Save_Data>();
         save_Data.LoadData();
         player = FindObjectOfType<Player>();

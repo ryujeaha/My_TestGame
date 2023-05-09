@@ -38,6 +38,7 @@ public class Shot : MonoBehaviour
             collision.GetComponent<Cow_Enemy>().Cow_Hp = collision.GetComponent<Cow_Enemy>().Cow_Hp - bullet_damage;
             if (collision.GetComponent<Cow_Enemy>().Cow_Hp <= 0)
             {
+                Sound_Manager.instance.PlaySound("Cow_Dead", 1);
                 Destroy(collision.gameObject);
                 manager.GetComponent<Manager>().Money();
             }

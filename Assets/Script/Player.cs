@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     }
     void Dead()
     {
+        Sound_Manager.instance.SetBgm(0);
         Time.timeScale = 0.001f;
         GameOver.SetActive(true);
     }

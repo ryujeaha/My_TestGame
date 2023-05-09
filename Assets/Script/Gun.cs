@@ -45,6 +45,7 @@ public class Gun : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.RightArrow))//오른쪽 클릭
             {
                 Shot_Effect(2);
+                Sound_Manager.instance.PlaySound("Shot_Sound", 1);
                 GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.Euler(0, 0, -45));
                 shot.GetComponent<Shot>().Set_Goal(2, target[2].transform);
                 ready_shot = false;
@@ -52,6 +53,7 @@ public class Gun : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftArrow))//왼쪽 클릭
             {
                 Shot_Effect(0);
+                Sound_Manager.instance.PlaySound("Shot_Sound", 1);
                 GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.Euler(0, 0, 45));
                 shot.GetComponent<Shot>().Set_Goal(0, target[0].transform);
                 ready_shot = false;
@@ -59,6 +61,7 @@ public class Gun : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.UpArrow))//위쪽 클릭
             {
                 Shot_Effect(1);
+                Sound_Manager.instance.PlaySound("Shot_Sound", 1);
                 GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
                 shot.GetComponent<Shot>().Set_Goal(1, target[1].transform);
                 ready_shot = false;
