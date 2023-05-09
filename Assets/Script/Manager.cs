@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Numerics;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class Manager : MonoBehaviour
 {
+    Save_Data save_Data;
+    Player player;
     public Text Stage_txt;
     public Text Beef_txt;
 
     public int Enemy_Count = 0;
     public BigInteger Beef = 0;
     public int stage_Level = 1;
+
     // Start is called before the first frame update
     void Start()
     {
+        save_Data = FindObjectOfType<Save_Data>();
+        save_Data.LoadData();
+        player = FindObjectOfType<Player>();
         Stage_txt.text = "Stage " + stage_Level.ToString();
         Beef_txt.text = "얻은 소고기 수:" + BeefUp(Beef);
     }
@@ -21,12 +28,19 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Enemy_Count >= 30)
+        StageUP();
+    }
+
+    void StageUP()
+    {
+        Beef_txt.text = "얻은 소고기 수: " + BeefUp(Beef);
+        if (Enemy_Count >= stage_Level * 20)
         {
             stage_Level++;
             Stage_txt.text = "Stage " + stage_Level.ToString();
             Enemy_Count = 0;
-            ;        }
+            save_Data.SaveData();
+        }
     }
     public int Set_Cow_hp()
     {
@@ -76,5 +90,13 @@ public class Manager : MonoBehaviour
             value = value.Substring(0, 1) + "." + value.Substring(1, 2) + "E개" + (value.Length - 1);
         }
         return value;
+    }
+
+    public void Game_retry()
+    {
+       save_Data.LoadData();
+       SceneManager.LoadScene("Game");
+        Time.timeScale = 1f;
+       player.GameOver.SetActive(false);
     }
 }

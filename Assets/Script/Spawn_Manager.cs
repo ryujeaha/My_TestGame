@@ -9,14 +9,25 @@ public class Spawn_Manager : MonoBehaviour
 
     Manager manager;
 
+    public float spawn_cooltime;
     private void Start()
     {
         manager = FindObjectOfType<Manager>();
         InvokeRepeating("Spawn_Cow",1,1);
     }
 
+    private void Update()
+    {
+        //SpawnCool();
+    }
+
+    void SpawnCool()
+    {
+        //spawn_cooltime = Mathf.Sqrt(manager.stage_Level) / manager.stage_Level;
+    }
     void Spawn_Cow()
     {
+        
         int Spawn = Random.Range(0, 3);//어디서 스폰 할 것인지 위치 정하기 변수
         if(Spawn != 2)
         {
@@ -29,7 +40,5 @@ public class Spawn_Manager : MonoBehaviour
             cow.transform.localScale = new Vector3(-0.35f, 0.35f, 1f);
             cow.GetComponent<Cow_Enemy>().Cow_Hp = manager.Set_Cow_hp();
         }
-        
-
     }
 }
