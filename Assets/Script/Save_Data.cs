@@ -59,10 +59,17 @@ public class Save_Data : MonoBehaviour
     }
     public void LoadData()//str을 받음(외부에서)
     {
+        try
+        {
+            string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
 
-        string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
+            PlayerData data2 = JsonUtility.FromJson<PlayerData>(jsonData);//데이터 로드
+            data2.SetData(manager, gun, player);
 
-        PlayerData data2 = JsonUtility.FromJson<PlayerData>(jsonData);//데이터 로드
-        data2.SetData(manager,gun,player);
+        }
+        catch (Exception)
+        {
+            SaveData();
+        }
     }
 }
