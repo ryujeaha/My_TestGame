@@ -6,6 +6,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class Manager : MonoBehaviour
 {
+    public GameObject Clear_Game;
+
+    Gun gun;
     Save_Data save_Data;
     Player player;
     public Text Stage_txt;
@@ -20,6 +23,7 @@ public class Manager : MonoBehaviour
     {
         save_Data = FindObjectOfType<Save_Data>();
         save_Data.LoadData();
+        gun = FindObjectOfType<Gun>();
         player = FindObjectOfType<Player>();
         Stage_txt.text = "Stage " + stage_Level.ToString();
         Beef_txt.text = "얻은 소고기 수:" + BeefUp(Beef);
@@ -29,6 +33,31 @@ public class Manager : MonoBehaviour
     void Update()
     {
         StageUP();
+        GameCLear();
+    }
+
+     void GameCLear()
+    {
+        if(stage_Level >= 6)
+        {
+            Sound_Manager.instance.PlaySound("Green Green Garden", 0);
+            Clear_Game.gameObject.SetActive(true);
+            Time.timeScale = 0.00001f;
+        }
+    }
+
+    public void GameReset()
+    {
+        Clear_Game.gameObject.SetActive(false);
+        gun.Gun_LV = 1;
+        stage_Level = 1;
+        Beef = 0;
+        player.Player_HP = 3;
+        player.HP_Cnt = 0;
+        save_Data.SaveData();
+        save_Data.LoadData();
+        SceneManager.LoadScene("Game");
+        Time.timeScale = 1f;
     }
 
     void StageUP()
