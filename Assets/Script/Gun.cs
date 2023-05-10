@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class Gun : MonoBehaviour
 {
     public Animator anim;
+    Shader shader;
+
 
     public Text Lv;
     public Transform[] target;
@@ -17,6 +19,7 @@ public class Gun : MonoBehaviour
     bool ready_shot;
     void Start()
     {
+        shader = FindObjectOfType<Shader>();
         ready_shot = true;
     }
 
@@ -33,6 +36,7 @@ public class Gun : MonoBehaviour
         if(Cooltime <= 0)
         {
             ready_shot = true;
+            shader.OutlineTrue();
             Cooltime = Atk_Speed;          
         }
     }
@@ -46,6 +50,7 @@ public class Gun : MonoBehaviour
             {
                 Shot_Effect(2);
                 Sound_Manager.instance.PlaySound("Shot_Sound", 1);
+                shader.OutlineFalse();
                 GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.Euler(0, 0, -45));
                 shot.GetComponent<Shot>().Set_Goal(2, target[2].transform);
                 ready_shot = false;
@@ -54,6 +59,7 @@ public class Gun : MonoBehaviour
             {
                 Shot_Effect(0);
                 Sound_Manager.instance.PlaySound("Shot_Sound", 1);
+                shader.OutlineFalse();
                 GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.Euler(0, 0, 45));
                 shot.GetComponent<Shot>().Set_Goal(0, target[0].transform);
                 ready_shot = false;
@@ -62,6 +68,7 @@ public class Gun : MonoBehaviour
             {
                 Shot_Effect(1);
                 Sound_Manager.instance.PlaySound("Shot_Sound", 1);
+                shader.OutlineFalse();
                 GameObject shot = (GameObject)Instantiate(Shot, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
                 shot.GetComponent<Shot>().Set_Goal(1, target[1].transform);
                 ready_shot = false;
