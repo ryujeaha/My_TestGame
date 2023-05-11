@@ -31,7 +31,7 @@ public class Gun : MonoBehaviour
 
     public void Cooltime_set()
     {
-        Atk_Speed = Mathf.Sqrt(Gun_LV) / Gun_LV;
+        Atk_Speed = (Mathf.Sqrt(Gun_LV) / Gun_LV);
         Cooltime -= Time.deltaTime;
         if(Cooltime <= 0)
         {
@@ -55,7 +55,7 @@ public class Gun : MonoBehaviour
                 shot.GetComponent<Shot>().Set_Goal(2, target[2].transform);
                 ready_shot = false;
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))//왼쪽 클릭
+           else if (Input.GetKeyDown(KeyCode.LeftArrow))//왼쪽 클릭
             {
                 Shot_Effect(0);
                 Sound_Manager.instance.PlaySound("Shot_Sound", 1);
@@ -64,7 +64,7 @@ public class Gun : MonoBehaviour
                 shot.GetComponent<Shot>().Set_Goal(0, target[0].transform);
                 ready_shot = false;
             }
-            if (Input.GetKeyDown(KeyCode.UpArrow))//위쪽 클릭
+          else if (Input.GetKeyDown(KeyCode.UpArrow))//위쪽 클릭
             {
                 Shot_Effect(1);
                 Sound_Manager.instance.PlaySound("Shot_Sound", 1);

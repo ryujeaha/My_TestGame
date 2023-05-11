@@ -10,20 +10,28 @@ public class Spawn_Manager : MonoBehaviour
     Manager manager;
 
     public float spawn_cooltime;
+    public float cooltime;
     private void Start()
     {
         manager = FindObjectOfType<Manager>();
-        InvokeRepeating("Spawn_Cow",1,1);
+        cooltime = 1;
+    }
+
+    public void SpawnCool()
+    {
+        spawn_cooltime = Mathf.Sqrt(manager.stage_Level/ manager.stage_Level);
+        cooltime -= Time.deltaTime;
+        if(cooltime <= 0)
+        {
+            cooltime -= Time.deltaTime;
+            Spawn_Cow();
+            cooltime = spawn_cooltime;
+        }
     }
 
     private void Update()
     {
-        //SpawnCool();
-    }
-
-    void SpawnCool()
-    {
-        //spawn_cooltime = Mathf.Sqrt(manager.stage_Level) / manager.stage_Level;
+        SpawnCool();
     }
     void Spawn_Cow()
     {

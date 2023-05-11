@@ -2084,6 +2084,7 @@ MonoBehaviour:
   - {fileID: 1299362934}
   - {fileID: 882340687}
   spawn_cooltime: 0
+  cooltime: 0
 --- !u!4 &758986421
 Transform:
   m_ObjectHideFlags: 0
@@ -2612,8 +2613,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1d704a7b24fe740bc8377c58cc143a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
-  outlineSize: 12
+  color: {r: 0.9234619, g: 1, b: 0, a: 1}
+  outlineSize: 15
 --- !u!1 &1016039374
 GameObject:
   m_ObjectHideFlags: 0

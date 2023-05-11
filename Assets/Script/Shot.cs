@@ -27,7 +27,7 @@ public class Shot : MonoBehaviour
     }
     void Move()
     {
-        bullet_damage = (int)(manager.Get_cost(50, 10, 1.07f, gun.Gun_LV)) / (5 / 2);
+        bullet_damage = (int)(manager.Get_cost(20, 10, 1.01f, gun.Gun_LV));
         transform.position = Vector2.MoveTowards(transform.position, targetMain.position, this.speed * Time.deltaTime);
     }
     private void OnTriggerEnter2D(Collider2D collision)

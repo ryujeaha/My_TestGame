@@ -31,8 +31,26 @@ public class Lv_up : MonoBehaviour
     }
 
     void Lv_Cost()
-    {
-        costText.text = "필요한 소고기"+cost+"개";
-        cost = manager.Get_cost(50, 10, 1.07f, gun.Gun_LV);
+    { 
+        if(gun.Gun_LV == 1)
+        {
+            cost = manager.Get_cost(18, 10, 1.01f, gun.Gun_LV);
+            costText.text = "필요한 소고기" + cost + "개";
+        }
+        else
+        {
+            if(gun.Gun_LV == manager.stage_Level)
+            {
+                costText.text = "필요한 소고기" + cost + "개";
+                cost = manager.Get_cost(18, 10, 1.01f, gun.Gun_LV) * manager.stage_Level;//얻을 수 있는 돈이 스테이지가 올라가면 몹수 2배 + 처치보상 2배로 4배가 올라가기 때문에
+            }
+            else
+            {
+                costText.text = "필요한 소고기" + cost + "개";
+                cost = manager.Get_cost(18, 10, 1.01f, gun.Gun_LV) * ((manager.stage_Level)-1);//얻을 수 있는 돈이 스테이지가 올라가면 몹수 2배 + 처치보상 2배로 4배가 올라가기 때문에
+            }
+           
+        }
     }
+        
 }

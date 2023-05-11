@@ -11,6 +11,7 @@ public class Manager : MonoBehaviour
     Gun gun;
     Save_Data save_Data;
     Player player;
+    Spawn_Manager theSpawn;
     public Text Stage_txt;
     public Text Beef_txt;
 
@@ -24,6 +25,7 @@ public class Manager : MonoBehaviour
         save_Data = FindObjectOfType<Save_Data>();
         save_Data.LoadData();
         gun = FindObjectOfType<Gun>();
+        theSpawn = FindObjectOfType<Spawn_Manager>();
         player = FindObjectOfType<Player>();
         Stage_txt.text = "Stage " + stage_Level.ToString();
         Beef_txt.text = "얻은 소고기 수:" + BeefUp(Beef);
@@ -68,12 +70,13 @@ public class Manager : MonoBehaviour
             stage_Level++;
             Stage_txt.text = "Stage " + stage_Level.ToString();
             Enemy_Count = 0;
+            theSpawn.SpawnCool();
             save_Data.SaveData();
         }
     }
     public int Set_Cow_hp()
     {
-        int Cow_hp = (int)Get_cost(10, 10, 1.06f, stage_Level) * 2;
+        int Cow_hp = (int)Get_cost(10, 10, 1.01f, stage_Level) * 2;
         return Cow_hp;
     }
 
@@ -87,7 +90,7 @@ public class Manager : MonoBehaviour
 
     public void Money()
     {
-        Beef += Get_cost(10, 10, 1.06f, stage_Level);
+        Beef += Get_cost(1, 10, 1.01f, stage_Level);
         Beef_txt.text = "얻은 소고기 수 :" + BeefUp(Beef);
         Enemy_Count++;
     }
