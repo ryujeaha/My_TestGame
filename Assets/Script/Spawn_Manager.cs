@@ -19,7 +19,7 @@ public class Spawn_Manager : MonoBehaviour
 
     public void SpawnCool()
     {
-        spawn_cooltime = Mathf.Sqrt(manager.stage_Level/ manager.stage_Level);
+        spawn_cooltime = Mathf.Sqrt(manager.stage_Level)/ manager.stage_Level;
         cooltime -= Time.deltaTime;
         if(cooltime <= 0)
         {
