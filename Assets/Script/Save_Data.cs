@@ -37,7 +37,8 @@ public class Save_Data : MonoBehaviour
     BigInteger Beef;
 
     private void Awake()
-    {
+    {   
+        Debug.Log(Application.persistentDataPath);
         manager = FindObjectOfType<Manager>();
         gun = FindObjectOfType<Gun>();
         player = FindObjectOfType<Player>();
@@ -56,6 +57,7 @@ public class Save_Data : MonoBehaviour
         Debug.Log(str);
 
         File.WriteAllText(Application.persistentDataPath + "/PlayerData.json", JsonUtility.ToJson(mydata));
+        
     }
     public void LoadData()//str을 받음(외부에서)
     {

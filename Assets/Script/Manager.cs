@@ -50,6 +50,7 @@ public class Manager : MonoBehaviour
 
     public void GameReset()
     {
+        player.GameOver.SetActive(false);
         Clear_Game.gameObject.SetActive(false);
         gun.Gun_LV = 1;
         stage_Level = 1;
